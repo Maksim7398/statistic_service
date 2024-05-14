@@ -18,6 +18,7 @@ public class KafkaConsumerService {
 
     @KafkaListener(topics = "transaction_topic",containerFactory = "kafkaListenerContainerFactoryStringTransactionMessage")
     public void readMessage(String message){
+
         final ObjectMapper objectMapper = new ObjectMapper();
 
         try {

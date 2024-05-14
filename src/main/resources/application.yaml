@@ -1,6 +1,11 @@
 server:
   port: 8085
 spring:
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
   kafka:
     bootstrapAddress: localhost:9090
     groupId: transaction_groupId
@@ -20,6 +25,18 @@ spring:
   liquibase:
     enabled: true
     change-log: db/changelog/db.changelog-master.xml
+
+
 app:
   integration:
     okved-url: http://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/okved2
+  cache:
+    cacheType: redis
+    cache-names:
+      - okved-category
+
+    cashes:
+      okved-category:
+        expiry: 10m
+  redis:
+    enable: true

@@ -1,8 +1,10 @@
 package com.transactions_categories.client;
 
+import com.transactions_categories.client.configuration.properties.AppCacheProperties;
 import com.transactions_categories.client.model.RequestQuery;
 import com.transactions_categories.client.model.Suggestions;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -20,16 +22,15 @@ public class OKVEDClient {
 
     private final WebClient webClient;
 
+    @Cacheable(AppCacheProperties.CacheNames.OKVED_CATEGORY)
     public Set<Suggestions> getTypeForCode(RequestQuery query) {
         return webClient
                 .post()
                 .header("Authorization", "Token 0ad41cccd3c7936e8dc7e074a4049a3661a68a3c")
                 .body(BodyInserters.fromValue(query))
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<Map<String, List<Suggestions>>>() {
-                })
+                .bodyToMono(new ParameterizedTypeReference<Map<String, List<Suggestions>>>() {})
                 .map(m -> new HashSet<>(m.get("suggestions")))
                 .block();
     }
-
 }

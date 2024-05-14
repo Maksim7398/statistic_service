@@ -1,4 +1,4 @@
-package com.transactions_categories.persist.entity.repository;
+package com.transactions_categories.persist.repository;
 
 import com.transactions_categories.persist.entity.TransactionPayments;
 import org.springframework.data.jpa.repository.JpaRepository;
