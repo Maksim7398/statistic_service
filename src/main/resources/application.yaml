@@ -20,4 +20,6 @@ spring:
   liquibase:
     enabled: true
     change-log: db/changelog/db.changelog-master.xml
-
+app:
+  integration:
+    okved-url: http://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/okved2
