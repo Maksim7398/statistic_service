@@ -27,4 +27,10 @@
             <column name="internal_transfer" type="BOOLEAN"/>
         </createTable>
     </changeSet>
+
+    <changeSet author="Maksim7398" id="001-create-field-create-date">
+        <addColumn tableName="transaction_payments">
+            <column name="create_date" type="date"/>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

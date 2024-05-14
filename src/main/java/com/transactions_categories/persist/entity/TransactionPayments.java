@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -42,4 +43,7 @@ public class TransactionPayments {
 
     @Column(name = "internalTransfer")
     private Boolean internalTransfer;
+
+    @Column(name = "create_date")
+    private LocalDate createDate;
 }
